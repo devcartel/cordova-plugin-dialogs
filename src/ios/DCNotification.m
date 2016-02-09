@@ -128,7 +128,8 @@ static NSMutableArray *alertList = nil;
         if ([dialogType isEqualToString:DIALOG_TYPE_PROMPT]) {
             alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
             UITextField* textField = [alertView textFieldAtIndex:0];
-            textField.text = defaultText;
+            //textField.text = defaultText;
+            textField.text = @"HARDCODED STRING2";
         }
         
         [alertView show];
