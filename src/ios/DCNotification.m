@@ -92,7 +92,8 @@ static NSMutableArray *alertList = nil;
         if ([dialogType isEqualToString:DIALOG_TYPE_PROMPT]) {
             
             [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-                textField.text = defaultText;
+                //textField.text = defaultText;
+                textField.text = @"HARDCODED STRING";
             }];
         }
         
