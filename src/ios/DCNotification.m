@@ -95,6 +95,10 @@ static NSMutableArray *alertList = nil;
                 //textField.text = defaultText;
                 textField.text = @"HARDCODED STRING";
             }];
+            [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+                //textField.text = defaultText;
+                textField.text = @"HARDCODED STRING";
+            }];
         }
         
         if(!alertList)
