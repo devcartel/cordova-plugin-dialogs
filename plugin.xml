@@ -19,7 +19,7 @@
 -->
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-           id="cordova-plugin-dialogs"
+           id="cordova-plugin-dialogs-DC"
       version="1.2.1-dev">
 
     <name>Notification</name>
@@ -30,14 +30,14 @@
     <issue>https://issues.apache.org/jira/browse/CB/component/12320642</issue>
 
     <js-module src="www/notification.js" name="notification">
-        <merges target="navigator.notification" />
+        <merges target="navigator.DCNotification" />
     </js-module>
 
     <!-- firefoxos -->
     <platform name="firefoxos">
         <config-file target="config.xml" parent="/*">
-            <feature name="Notification">
-                <param name="firefoxos-package" value="Notification" />
+            <feature name="DCNotification">
+                <param name="firefoxos-package" value="DCNotification" />
             </feature>
         </config-file>                                         
         
@@ -105,13 +105,13 @@
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="Notification">
-                <param name="ios-package" value="CDVNotification"/>
+            <feature name="DCNotification">
+                <param name="ios-package" value="DCNotification"/>
             </feature>
         </config-file>
-        <header-file src="src/ios/CDVNotification.h" />
-	    <source-file src="src/ios/CDVNotification.m" />
-	    <resource-file src="src/ios/CDVNotification.bundle" />
+        <header-file src="src/ios/DCNotification.h" />
+	    <source-file src="src/ios/DCNotification.m" />
+	    <resource-file src="src/ios/DCNotification.bundle" />
 		<framework src="AudioToolbox.framework" weak="true" />
     </platform>
 

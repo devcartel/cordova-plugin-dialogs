@@ -22,7 +22,7 @@
 #import <AudioToolbox/AudioServices.h>
 #import <Cordova/CDVPlugin.h>
 
-@interface CDVNotification : CDVPlugin <UIAlertViewDelegate>{}
+@interface DCNotification : CDVPlugin <UIAlertViewDelegate>{}
 
 - (void)alert:(CDVInvokedUrlCommand*)command;
 - (void)confirm:(CDVInvokedUrlCommand*)command;
@@ -31,7 +31,7 @@
 
 @end
 
-@interface CDVAlertView : UIAlertView {}
+@interface DCAlertView : UIAlertView {}
 @property (nonatomic, copy) NSString* callbackId;
 
 @end
