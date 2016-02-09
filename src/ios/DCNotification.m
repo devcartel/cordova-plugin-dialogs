@@ -93,11 +93,7 @@ static NSMutableArray *alertList = nil;
             
             [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                 //textField.text = defaultText;
-                textField.text = @"HARDCODED STRING";
-            }];
-            [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-                //textField.text = defaultText;
-                textField.text = @"HARDCODED STRING";
+                textField.placeholder = @"HARDCODED STRING";
             }];
         }
         
@@ -133,7 +129,7 @@ static NSMutableArray *alertList = nil;
             alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
             UITextField* textField = [alertView textFieldAtIndex:0];
             //textField.text = defaultText;
-            textField.text = @"HARDCODED STRING2";
+            textField.placeholder = @"HARDCODED STRING2";
         }
         
         [alertView show];
