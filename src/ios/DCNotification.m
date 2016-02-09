@@ -174,18 +174,6 @@ static NSMutableArray *alertList = nil;
     [self showDialogWithMessage:message title:title buttons:buttons defaultText:defaultText callbackId:callbackId dialogType:DIALOG_TYPE_PROMPT];
 }
 
-- (void)dcprompt:(CDVInvokedUrlCommand*)command
-{
-    NSString* callbackId = command.callbackId;
-    NSString* message = [command argumentAtIndex:0];
-    //NSString* title = [command argumentAtIndex:1];
-    NSString* title = @"TEST TITLE";
-    NSArray* buttons = [command argumentAtIndex:2];
-    NSString* defaultText = [command argumentAtIndex:3];
-
-    [self showDialogWithMessage:message title:title buttons:buttons defaultText:defaultText callbackId:callbackId dialogType:DIALOG_TYPE_PROMPT];
-}
-
 /**
   * Callback invoked when an alert dialog's buttons are clicked.
   */

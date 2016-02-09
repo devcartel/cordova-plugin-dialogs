@@ -96,15 +96,8 @@ module.exports = {
         var _title = (typeof title === "string" ? title : "Prompt");
         var _buttonLabels = (buttonLabels || ["OK","Cancel"]);
         var _defaultText = (defaultText || "");
-        exec(resultCallback, null, "Notification", "prompt", [_message, _title, _buttonLabels, _defaultText]);
-    },
-    dcprompt: function(message, resultCallback, title, buttonLabels, defaultText) {
-        var _message = (typeof message === "string" ? message : "DCPrompt message");
-        var _title = (typeof title === "string" ? title : "DCPrompt");
-        var _buttonLabels = (buttonLabels || ["OK","Cancel"]);
-        var _defaultText = (defaultText || "");
         exec(resultCallback, null, "DCNotification", "prompt", [_message, _title, _buttonLabels, _defaultText]);
-    },    
+    },   
 
     /**
      * Causes the device to beep.
