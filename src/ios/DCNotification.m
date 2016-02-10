@@ -94,6 +94,9 @@ static NSMutableArray *alertList = nil;
             [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                 textField.text = defaultText;
             }];
+            [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+                textField.text = defaultText;
+            }];
         }
         
         if(!alertList)
@@ -226,7 +229,7 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
     {
         presentingViewController = presentingViewController.presentedViewController;
     }
-    return [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    return presentingViewController;
 }
 
 -(void)presentAlertcontroller {
