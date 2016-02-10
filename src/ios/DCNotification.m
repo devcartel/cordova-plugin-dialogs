@@ -241,6 +241,7 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
         [alertList removeObject:[alertList firstObject]];
         if ([alertList count]>0) {
             [weakNotif presentAlertcontroller];
+            [self.alertController.view layoutIfNeeded]
         }
     }];
     
