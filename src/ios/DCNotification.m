@@ -107,6 +107,7 @@ static NSMutableArray *alertList = nil;
         
         if ([alertList count]==1) {
             [self presentAlertcontroller];
+            [alertController.view layoutIfNeeded];
         }
         
     }
@@ -241,7 +242,6 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
         [alertList removeObject:[alertList firstObject]];
         if ([alertList count]>0) {
             [weakNotif presentAlertcontroller];
-            [self.alertController.view layoutIfNeeded]
         }
     }];
     
