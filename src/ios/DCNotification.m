@@ -94,9 +94,6 @@ static NSMutableArray *alertList = nil;
             [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                 textField.text = defaultText;
             }];
-            [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-                textField.text = defaultText;
-            }];
         }
         
         /*if(!alertList)
