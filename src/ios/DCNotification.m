@@ -95,6 +95,10 @@ static NSMutableArray *alertList = nil;
                 textField.text = defaultText;
 
             }];
+            [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+                textField.text = defaultText;
+
+            }];
         }
         
         if(!alertList)
@@ -222,12 +226,13 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
 }
 
 -(UIViewController *)getTopPresentedViewController {
-    UIViewController *presentingViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    UIViewController *presentingViewController = self.viewController;
     while(presentingViewController.presentedViewController != nil)
     {
         presentingViewController = presentingViewController.presentedViewController;
     }
-    return presentingViewController;
+    //return presentingViewController;
+    return [[[[UIApplication sharedApplication] delegate] window] rootViewController];`
 }
 
 -(void)presentAlertcontroller {
