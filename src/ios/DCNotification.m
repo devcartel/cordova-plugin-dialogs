@@ -231,8 +231,7 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
     {
         presentingViewController = presentingViewController.presentedViewController;
     }
-    //return presentingViewController;
-    return [[[[UIApplication sharedApplication] delegate] window] rootViewController];`
+    return presentingViewController;
 }
 
 -(void)presentAlertcontroller {
