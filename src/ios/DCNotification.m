@@ -102,7 +102,7 @@ static NSMutableArray *alertList = nil;
         [alertList addObject:alertController];
         
         if ([alertList count]==1) {
-            [self.viewController presentViewController:alertController];
+            [self presentAlertcontroller];
         }
         
     }
@@ -222,7 +222,7 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
 }
 
 -(UIViewController *)getTopPresentedViewController {
-    UIViewController *presentingViewController = self.viewController;
+    UIViewController *presentingViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
     while(presentingViewController.presentedViewController != nil)
     {
         presentingViewController = presentingViewController.presentedViewController;
