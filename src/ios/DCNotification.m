@@ -41,7 +41,7 @@ static NSMutableArray *alertList = nil;
 {
     
     NSUInteger count = [buttons count];
-//#ifdef __IPHONE_8_0
+#ifdef __IPHONE_8_0
     if (NSClassFromString(@"UIAlertController")) {
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
@@ -93,11 +93,6 @@ static NSMutableArray *alertList = nil;
             
             [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                 textField.text = defaultText;
-
-            }];
-            [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-                textField.text = defaultText;
-
             }];
         }
         
@@ -107,13 +102,12 @@ static NSMutableArray *alertList = nil;
         
         if ([alertList count]==1) {
             [self presentAlertcontroller];
-            [alertController.view layoutIfNeeded];
         }
         
     }
     else
     {
-//#endif
+#endif
 
         DCAlertView* alertView = [[DCAlertView alloc]
                                    initWithTitle:title
@@ -137,9 +131,9 @@ static NSMutableArray *alertList = nil;
         }
         
         [alertView show];
-//#ifdef __IPHONE_8_0
+#ifdef __IPHONE_8_0
     }
-//#endif
+#endif
     
 }
 
