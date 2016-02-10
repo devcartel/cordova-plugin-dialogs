@@ -41,7 +41,7 @@ static NSMutableArray *alertList = nil;
 {
     
     NSUInteger count = [buttons count];
-#ifdef __IPHONE_8_0
+//#ifdef __IPHONE_8_0
     if (NSClassFromString(@"UIAlertController")) {
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
@@ -99,18 +99,18 @@ static NSMutableArray *alertList = nil;
             }];
         }
         
-        if(!alertList)
+        /*if(!alertList)
             alertList = [[NSMutableArray alloc] init];
         [alertList addObject:alertController];
         
         if ([alertList count]==1) {
             [self presentAlertcontroller];
-        }
-        
+        }*/
+        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:alertController animated:YES completion:nil];
     }
     else
     {
-#endif
+//#endif
 
         DCAlertView* alertView = [[DCAlertView alloc]
                                    initWithTitle:title
@@ -134,9 +134,9 @@ static NSMutableArray *alertList = nil;
         }
         
         [alertView show];
-#ifdef __IPHONE_8_0
+//#ifdef __IPHONE_8_0
     }
-#endif
+//#endif
     
 }
 
