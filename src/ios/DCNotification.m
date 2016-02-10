@@ -41,7 +41,7 @@ static NSMutableArray *alertList = nil;
 {
     
     NSUInteger count = [buttons count];
-//#ifdef __IPHONE_8_0
+#ifdef __IPHONE_8_0
     if (NSClassFromString(@"UIAlertController")) {
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
@@ -92,12 +92,8 @@ static NSMutableArray *alertList = nil;
         if ([dialogType isEqualToString:DIALOG_TYPE_PROMPT]) {
             
             [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-                //textField.text = defaultText;
-                textField.text = @"HARDCODED STRING";
-            }];
-            [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-                //textField.text = defaultText;
-                textField.text = @"HARDCODED STRING";
+                textField.text = defaultText;
+
             }];
         }
         
@@ -112,7 +108,7 @@ static NSMutableArray *alertList = nil;
     }
     else
     {
-//#endif
+#endif
 
         DCAlertView* alertView = [[DCAlertView alloc]
                                    initWithTitle:title
@@ -132,14 +128,13 @@ static NSMutableArray *alertList = nil;
         if ([dialogType isEqualToString:DIALOG_TYPE_PROMPT]) {
             alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
             UITextField* textField = [alertView textFieldAtIndex:0];
-            //textField.text = defaultText;
-            textField.text = @"HARDCODED STRING2";
+            textField.text = defaultText;
         }
         
         [alertView show];
-//#ifdef __IPHONE_8_0
+#ifdef __IPHONE_8_0
     }
-//#endif
+#endif
     
 }
 
