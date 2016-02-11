@@ -132,7 +132,7 @@ static NSMutableArray *alertList = nil;
         }
         
         [alertView show];
-#ifdef __IPHONE_8_0
+#ifdef __IPHONE_9_0
     }
 #endif
 }
