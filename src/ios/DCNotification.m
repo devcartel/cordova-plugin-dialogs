@@ -31,7 +31,7 @@ static NSMutableArray *alertList = nil;
 {
     if( self = [super init] )
     {
-        UIViewController *presentingViewController = self.viewController;
+        UIViewController *RootViewController = self.viewController;
     }
     
     return self;
@@ -235,6 +235,7 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
 
 -(UIViewController *)getTopPresentedViewController {
     //UIViewController *presentingViewController = self.viewController;
+    UIViewController *presentingViewController = self.RootViewController;
     while(presentingViewController.presentedViewController != nil)
     {
         presentingViewController = presentingViewController.presentedViewController;
