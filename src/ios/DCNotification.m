@@ -239,29 +239,18 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
 
 - (UIViewController *)topViewController:(UIViewController *)rootViewController
 {
-  if (rootViewController.presentedViewController == nil) {
-    return rootViewController;
+  if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+    UINavigationController *navigationController = (UINavigationController *)rootViewController;
+    return [self topViewController:[navigationController.viewControllers lastObject]];
   }
-  
-  if ([rootViewController.presentedViewController isMemberOfClass:[UINavigationController class]]) {
-    UINavigationController *navigationController = (UINavigationController *)rootViewController.presentedViewController;
-    UIViewController *lastViewController = [[navigationController viewControllers] lastObject];
-    return [self topViewController:lastViewController];
+  if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+    UITabBarController *tabController = (UITabBarController *)rootViewController;
+    return [self topViewController:tabController.selectedViewController];
   }
-  
-  UIViewController *presentedViewController = (UIViewController *)rootViewController.presentedViewController;
-  return [self topViewController:presentedViewController];
-}
-
--(void)presentAlertcontroller {
-    
-    __weak DCNotification* weakNotif = self;
-    [self.topViewController presentViewController:[alertList firstObject] animated:YES completion:^{
-        [alertList removeObject:[alertList firstObject]];
-        if ([alertList count]>0) {
-            [weakNotif presentAlertcontroller];
-        }
-    }];
+  if (rootViewController.presentedViewController) {
+    return [self topViewController:rootViewController];
+  }
+  return rootViewController;
 }
 
 @end
