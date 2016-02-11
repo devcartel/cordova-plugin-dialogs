@@ -96,14 +96,14 @@ static NSMutableArray *alertList = nil;
             }];
         }
         
-        /*if(!alertList)
+        if(!alertList)
             alertList = [[NSMutableArray alloc] init];
         [alertList addObject:alertController];
         
         if ([alertList count]==1) {
             [self presentAlertcontroller];
-        }*/
-        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:alertController animated:YES completion:nil];
+        }
+        //[[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:alertController animated:YES completion:nil];
     }
     else
     {
@@ -232,7 +232,13 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
 -(void)presentAlertcontroller {
     
     __weak DCNotification* weakNotif = self;
-    [self.getTopPresentedViewController presentViewController:[alertList firstObject] animated:YES completion:^{
+    /*[self.getTopPresentedViewController presentViewController:[alertList firstObject] animated:YES completion:^{
+        [alertList removeObject:[alertList firstObject]];
+        if ([alertList count]>0) {
+            [weakNotif presentAlertcontroller];
+        }
+    }];*/
+    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:[alertList firstObject] animated:YES completion:^{
         [alertList removeObject:[alertList firstObject]];
         if ([alertList count]>0) {
             [weakNotif presentAlertcontroller];
