@@ -223,40 +223,20 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
     playBeep([count intValue]);
 }
 
-/*-(UIViewController *)getTopPresentedViewController {
-    UIViewController *presentingViewController = self.viewController;
-
+-(UIViewController *)getTopPresentedViewController {
+    //UIViewController *presentingViewController = self.viewController;
+    UIViewController *presentingViewController = self.RootViewController;
     while(presentingViewController.presentedViewController != nil)
     {
         presentingViewController = presentingViewController.presentedViewController;
     }
     return presentingViewController;
-}*/
-
-- (UIViewController *)topViewController{
-  return [self topViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
-}
-
-- (UIViewController *)topViewController:(UIViewController *)rootViewController
-{
-  if ([rootViewController isKindOfClass:[UINavigationController class]]) {
-    UINavigationController *navigationController = (UINavigationController *)rootViewController;
-    return [self topViewController:[navigationController.viewControllers lastObject]];
-  }
-  if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-    UITabBarController *tabController = (UITabBarController *)rootViewController;
-    return [self topViewController:tabController.selectedViewController];
-  }
-  if (rootViewController.presentedViewController) {
-    return [self topViewController:rootViewController];
-  }
-  return rootViewController;
 }
 
 -(void)presentAlertcontroller {
     
     __weak DCNotification* weakNotif = self;
-    [self.topViewController presentViewController:[alertList firstObject] animated:YES completion:^{
+    [self.getTopPresentedViewController presentViewController:[alertList firstObject] animated:YES completion:^{
         [alertList removeObject:[alertList firstObject]];
         if ([alertList count]>0) {
             [weakNotif presentAlertcontroller];
