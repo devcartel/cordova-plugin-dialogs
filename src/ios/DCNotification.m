@@ -31,7 +31,7 @@ static NSMutableArray *alertList = nil;
 {
     if( self = [super init] )
     {
-        UIViewController *RootViewController = self.viewController;
+        UIViewController *RootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
     }
     
     return self;
