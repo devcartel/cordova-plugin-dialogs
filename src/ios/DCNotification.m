@@ -27,16 +27,6 @@ static NSMutableArray *alertList = nil;
 
 @implementation DCNotification
 
-- (id)init
-{
-    if( self = [super init] )
-    {
-        UIViewController *RootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-    }
-    
-    return self;
-}
-
 /*
  * showDialogWithMessage - Common method to instantiate the alert view for alert, confirm, and prompt notifications.
  * Parameters:
@@ -233,20 +223,40 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
     playBeep([count intValue]);
 }
 
--(UIViewController *)getTopPresentedViewController {
-    //UIViewController *presentingViewController = self.viewController;
-    UIViewController *presentingViewController = self.RootViewController;
+/*-(UIViewController *)getTopPresentedViewController {
+    UIViewController *presentingViewController = self.viewController;
+
     while(presentingViewController.presentedViewController != nil)
     {
         presentingViewController = presentingViewController.presentedViewController;
     }
     return presentingViewController;
+}*/
+
+- (UIViewController *)topViewController{
+  return [self topViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
+}
+
+- (UIViewController *)topViewController:(UIViewController *)rootViewController
+{
+  if (rootViewController.presentedViewController == nil) {
+    return rootViewController;
+  }
+  
+  if ([rootViewController.presentedViewController isMemberOfClass:[UINavigationController class]]) {
+    UINavigationController *navigationController = (UINavigationController *)rootViewController.presentedViewController;
+    UIViewController *lastViewController = [[navigationController viewControllers] lastObject];
+    return [self topViewController:lastViewController];
+  }
+  
+  UIViewController *presentedViewController = (UIViewController *)rootViewController.presentedViewController;
+  return [self topViewController:presentedViewController];
 }
 
 -(void)presentAlertcontroller {
     
     __weak DCNotification* weakNotif = self;
-    [self.getTopPresentedViewController presentViewController:[alertList firstObject] animated:YES completion:^{
+    [self.topViewController presentViewController:[alertList firstObject] animated:YES completion:^{
         [alertList removeObject:[alertList firstObject]];
         if ([alertList count]>0) {
             [weakNotif presentAlertcontroller];
