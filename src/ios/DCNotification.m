@@ -39,7 +39,7 @@ static NSMutableArray *alertList = nil;
  */
 - (void)showDialogWithMessage:(NSString*)message title:(NSString*)title buttons:(NSArray*)buttons defaultText:(NSString*)defaultText callbackId:(NSString*)callbackId dialogType:(NSString*)dialogType
 {
-    
+    /*
     NSUInteger count = [buttons count];
 //#ifdef __IPHONE_8_0
     if (NSClassFromString(@"UIAlertController")) {
@@ -137,7 +137,7 @@ static NSMutableArray *alertList = nil;
 //#ifdef __IPHONE_8_0
     }
 //#endif
-    
+    */
 }
 
 - (void)alert:(CDVInvokedUrlCommand*)command
