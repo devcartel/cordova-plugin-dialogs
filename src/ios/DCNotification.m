@@ -224,8 +224,7 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
 }
 
 -(UIViewController *)getTopPresentedViewController {
-    //UIViewController *presentingViewController = self.viewController;
-    UIViewController *presentingViewController = self.RootViewController;
+    UIViewController *presentingViewController = self.viewController;
     while(presentingViewController.presentedViewController != nil)
     {
         presentingViewController = presentingViewController.presentedViewController;
