@@ -25,8 +25,16 @@
 static void soundCompletionCallback(SystemSoundID ssid, void* data);
 static NSMutableArray *alertList = nil;
 
-@implementation DCNotification {
-    UIViewController *presentingViewController = self.viewController;
+@implementation DCNotification
+
+- (id)init
+{
+    if( self = [super init] )
+    {
+        UIViewController *presentingViewController = self.viewController;
+    }
+    
+    return self;
 }
 
 /*
