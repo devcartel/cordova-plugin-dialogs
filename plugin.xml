@@ -106,7 +106,8 @@
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
             <feature name="DCNotification">
-                <param name="ios-package" value="DCNotification"/>
+                <param name="ios-package" value="DCNotification" />
+                <param name="onload" value="true" />
             </feature>
         </config-file>
         <header-file src="src/ios/DCNotification.h" />
