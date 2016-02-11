@@ -108,7 +108,6 @@ static NSMutableArray *alertList = nil;
         if ([alertList count]==1) {
             [self presentAlertcontroller];
         }
-        //[[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:alertController animated:YES completion:nil];
     }
     else
     {
@@ -239,11 +238,13 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
     
     __weak DCNotification* weakNotif = self;
     [self.getTopPresentedViewController presentViewController:[alertList firstObject] animated:YES completion:^{
+        [[alertList firstObject].view layoutIfNeeded];
         [alertList removeObject:[alertList firstObject]];
         if ([alertList count]>0) {
             [weakNotif presentAlertcontroller];
         }
     }];
+    
 }
 
 @end
