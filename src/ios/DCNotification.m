@@ -40,7 +40,7 @@ static NSMutableArray *alertList = nil;
 - (void)showDialogWithMessage:(NSString*)message title:(NSString*)title buttons:(NSArray*)buttons defaultText:(NSString*)defaultText callbackId:(NSString*)callbackId dialogType:(NSString*)dialogType
 {
     NSUInteger count = [buttons count];
-#ifdef __IPHONE_9_0
+//#ifdef __IPHONE_8_0
     if (NSClassFromString(@"UIAlertController")) {
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
@@ -92,6 +92,9 @@ static NSMutableArray *alertList = nil;
             
             [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                 textField.text = defaultText;
+                textField.textAlignment = NSTextAlignmentCenter;
+                textField.keyboardType = UIKeyboardTypeNumberPad;
+                [textField setFont:[UIFont fontWithName:@"Helvetica-Bold" size:20]];
             }];
             [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                 textField.text = defaultText;
@@ -108,7 +111,7 @@ static NSMutableArray *alertList = nil;
     }
     else
     {
-#endif
+//#endif
 
         DCAlertView* alertView = [[DCAlertView alloc]
                                    initWithTitle:title
@@ -132,9 +135,9 @@ static NSMutableArray *alertList = nil;
         }
         
         [alertView show];
-#ifdef __IPHONE_9_0
+//#ifdef __IPHONE_8_0
     }
-#endif
+//#endif
 }
 
 - (void)alert:(CDVInvokedUrlCommand*)command
@@ -240,7 +243,6 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
         [alertList removeObject:[alertList firstObject]];
         if ([alertList count]>0) {
             [weakNotif presentAlertcontroller];
-            [alertController.view layoutIfNeeded];
         }
     }];
     
