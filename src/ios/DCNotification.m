@@ -25,7 +25,9 @@
 static void soundCompletionCallback(SystemSoundID ssid, void* data);
 static NSMutableArray *alertList = nil;
 
-@implementation DCNotification
+@implementation DCNotification {
+    UIViewController *presentingViewController = self.viewController;
+}
 
 /*
  * showDialogWithMessage - Common method to instantiate the alert view for alert, confirm, and prompt notifications.
@@ -224,7 +226,7 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
 }
 
 -(UIViewController *)getTopPresentedViewController {
-    UIViewController *presentingViewController = self.viewController;
+    //UIViewController *presentingViewController = self.viewController;
     while(presentingViewController.presentedViewController != nil)
     {
         presentingViewController = presentingViewController.presentedViewController;
@@ -235,14 +237,12 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
 -(void)presentAlertcontroller {
     
     __weak DCNotification* weakNotif = self;
-    /*[self.getTopPresentedViewController presentViewController:[alertList firstObject] animated:YES completion:^{
+    [self.getTopPresentedViewController presentViewController:[alertList firstObject] animated:YES completion:^{
         [alertList removeObject:[alertList firstObject]];
         if ([alertList count]>0) {
             [weakNotif presentAlertcontroller];
         }
-    }];*/
-    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:[alertList firstObject] animated:YES completion:nil];
-    
+    }];
 }
 
 @end
