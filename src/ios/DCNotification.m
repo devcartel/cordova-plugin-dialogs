@@ -39,7 +39,6 @@ static NSMutableArray *alertList = nil;
  */
 - (void)showDialogWithMessage:(NSString*)message title:(NSString*)title buttons:(NSArray*)buttons defaultText:(NSString*)defaultText callbackId:(NSString*)callbackId dialogType:(NSString*)dialogType
 {
-    [self.commandDelegate runInBackground:^{
     NSUInteger count = [buttons count];
 //#ifdef __IPHONE_8_0
     if (NSClassFromString(@"UIAlertController")) {
@@ -140,8 +139,6 @@ static NSMutableArray *alertList = nil;
 //#ifdef __IPHONE_8_0
     }
 //#endif
-
-    }];
 }
 
 - (void)alert:(CDVInvokedUrlCommand*)command
@@ -166,13 +163,15 @@ static NSMutableArray *alertList = nil;
 
 - (void)prompt:(CDVInvokedUrlCommand*)command
 {
-    NSString* callbackId = command.callbackId;
-    NSString* message = [command argumentAtIndex:0];
-    NSString* title = [command argumentAtIndex:1];
-    NSArray* buttons = [command argumentAtIndex:2];
-    NSString* defaultText = [command argumentAtIndex:3];
+    [self.commandDelegate runInBackground:^{
+        NSString* callbackId = command.callbackId;
+        NSString* message = [command argumentAtIndex:0];
+        NSString* title = [command argumentAtIndex:1];
+        NSArray* buttons = [command argumentAtIndex:2];
+        NSString* defaultText = [command argumentAtIndex:3];
 
-    [self showDialogWithMessage:message title:title buttons:buttons defaultText:defaultText callbackId:callbackId dialogType:DIALOG_TYPE_PROMPT];
+        [self showDialogWithMessage:message title:title buttons:buttons defaultText:defaultText callbackId:callbackId dialogType:DIALOG_TYPE_PROMPT];
+    }];
 }
 
 /**
