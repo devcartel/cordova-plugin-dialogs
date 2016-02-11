@@ -253,6 +253,17 @@ static void soundCompletionCallback(SystemSoundID  ssid, void* data) {
   return rootViewController;
 }
 
+-(void)presentAlertcontroller {
+    
+    __weak DCNotification* weakNotif = self;
+    [self.topViewController presentViewController:[alertList firstObject] animated:YES completion:^{
+        [alertList removeObject:[alertList firstObject]];
+        if ([alertList count]>0) {
+            [weakNotif presentAlertcontroller];
+        }
+    }];
+}
+
 @end
 
 @implementation DCAlertView
