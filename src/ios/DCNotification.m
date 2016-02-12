@@ -101,13 +101,14 @@ static NSMutableArray *alertList = nil;
             }];
         }
         
-        if(!alertList)
+        /*if(!alertList)
             alertList = [[NSMutableArray alloc] init];
         [alertList addObject:alertController];
         
         if ([alertList count]==1) {
             [self presentAlertcontroller];
-        }
+        }*/
+        [self.viewController presentViewController:alertController animated:YES completion:nil];
     }
     else
     {
