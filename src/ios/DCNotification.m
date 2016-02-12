@@ -108,7 +108,7 @@ static NSMutableArray *alertList = nil;
         if ([alertList count]==1) {
             [self presentAlertcontroller];
         }*/
-        //[self.viewController presentViewController:alertController animated:YES completion:nil];
+        [self.viewController presentViewController:alertController animated:YES completion:nil];
     }
     else
     {
@@ -170,26 +170,8 @@ static NSMutableArray *alertList = nil;
         NSArray* buttons = [command argumentAtIndex:2];
         NSString* defaultText = [command argumentAtIndex:3];
 
-        //[self showDialogWithMessage:message title:title buttons:buttons defaultText:defaultText callbackId:callbackId dialogType:DIALOG_TYPE_PROMPT];
-        
-        // check if issue happens on basic code
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"test_title" message:@"test_message" preferredStyle:UIAlertControllerStyleAlert];
-    
-        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        
-        //textField.keyboardType = UIKeyboardTypeNumberPad;
-        
-        textField.text = @"test";
-        
-        }];
-    
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:nil];
-    
-        [alert addAction:okAction];
-    
-        [self presentViewController:alert animated:YES completion:nil];
-
-        }];
+        [self showDialogWithMessage:message title:title buttons:buttons defaultText:defaultText callbackId:callbackId dialogType:DIALOG_TYPE_PROMPT];
+    }];
 }
 
 /**
