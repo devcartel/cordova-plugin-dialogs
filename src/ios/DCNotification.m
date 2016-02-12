@@ -111,11 +111,11 @@ static NSMutableArray *alertList = nil;
         //[self.viewController presentViewController:alertController animated:YES completion:nil];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"test_title" message:@"test_message" preferredStyle:UIAlertControllerStyleAlert];
     
-        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        [alert addTextFieldWithConfigurationHandler:^(UITextField *textField2) {
 
-            textField.keyboardType = UIKeyboardTypeNumberPad;
+            textField2.keyboardType = UIKeyboardTypeNumberPad;
 
-            textField.text = @"test";
+            textField2.text = @"test";
 
         }];
 
