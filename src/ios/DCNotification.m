@@ -111,7 +111,7 @@ static NSMutableArray *alertList = nil;
         //[self.viewController presentViewController:alertController animated:YES completion:nil];
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"test_title" message:@"test_message" preferredStyle:UIAlertControllerStyleAlert];
     
-        [alert addTextFieldWithConfigurationHandler:^(UITextField *textField2) {
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField2) {
 
             textField2.keyboardType = UIKeyboardTypeNumberPad;
 
@@ -121,7 +121,7 @@ static NSMutableArray *alertList = nil;
 
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:nil];
 
-        [alert addAction:okAction];
+        [alertController addAction:okAction];
 
         [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:alertController animated:YES completion:nil];
         
