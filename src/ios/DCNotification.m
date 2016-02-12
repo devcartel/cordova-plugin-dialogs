@@ -123,7 +123,7 @@ static NSMutableArray *alertList = nil;
 
         [alert addAction:okAction];
 
-        [self presentViewController:alert animated:YES completion:nil];
+        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:alert animated:YES completion:nil];
         
     }
     else
