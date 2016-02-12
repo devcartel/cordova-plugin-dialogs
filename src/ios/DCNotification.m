@@ -109,7 +109,7 @@ static NSMutableArray *alertList = nil;
             [self presentAlertcontroller];
         }*/
         //[self.viewController presentViewController:alertController animated:YES completion:nil];
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"test_title" message:@"test_message" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController alertController = [UIAlertController alertControllerWithTitle:@"test_title" message:@"test_message" preferredStyle:UIAlertControllerStyleAlert];
     
         [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField2) {
 
