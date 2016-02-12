@@ -43,7 +43,7 @@ static NSMutableArray *alertList = nil;
 //#ifdef __IPHONE_8_0
     if (NSClassFromString(@"UIAlertController")) {
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        /*UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
         
         if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.3) {
             
@@ -99,7 +99,7 @@ static NSMutableArray *alertList = nil;
             [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                 textField.text = defaultText;
             }];
-        }
+        }*/
         
         /*if(!alertList)
             alertList = [[NSMutableArray alloc] init];
@@ -109,7 +109,7 @@ static NSMutableArray *alertList = nil;
             [self presentAlertcontroller];
         }*/
         //[self.viewController presentViewController:alertController animated:YES completion:nil];
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"test_title" message:@"test_message" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"test_title" message:@"test_message" preferredStyle:UIAlertControllerStyleAlert];
     
         [alert addTextFieldWithConfigurationHandler:^(UITextField *textField2) {
 
@@ -123,7 +123,7 @@ static NSMutableArray *alertList = nil;
 
         [alert addAction:okAction];
 
-        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:alert animated:YES completion:nil];
+        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:alertController animated:YES completion:nil];
         
     }
     else
