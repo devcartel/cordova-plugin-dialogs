@@ -108,7 +108,23 @@ static NSMutableArray *alertList = nil;
         if ([alertList count]==1) {
             [self presentAlertcontroller];
         }*/
-        [self.viewController presentViewController:alertController animated:YES completion:nil];
+        //[self.viewController presentViewController:alertController animated:YES completion:nil];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"test_title" message:@"test_message" preferredStyle:UIAlertControllerStyleAlert];
+    
+        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+
+            textField.keyboardType = UIKeyboardTypeNumberPad;
+
+            textField.text = @"test";
+
+        }];
+
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:nil];
+
+        [alert addAction:okAction];
+
+        [self presentViewController:alert animated:YES completion:nil];
+        
     }
     else
     {
